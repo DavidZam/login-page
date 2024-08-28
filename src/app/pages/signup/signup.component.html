@@ -5,22 +5,71 @@
   </div>
   <form class="form-group" [formGroup]="signupForm" (ngSubmit)="onSubmit()">
     <input type="text" name="name" placeholder="Name" formControlName="name" />
+    <div
+      *ngIf="
+        signupForm.controls['name'].invalid &&
+        signupForm.controls['name'].touched
+      "
+      class="error-message"
+    >
+      <span *ngIf="signupForm.controls['name'].errors?.['required']"
+        >Name is required.</span
+      >
+    </div>
+
     <input
       type="email"
       name="email"
       placeholder="Email"
       formControlName="email"
     />
+    <div
+      *ngIf="
+        signupForm.controls['email'].invalid &&
+        signupForm.controls['email'].touched
+      "
+      class="error-message"
+    >
+      <span *ngIf="signupForm.controls['email'].errors?.['required']"
+        >Email is required.</span
+      >
+      <span *ngIf="signupForm.controls['email'].errors?.['email']"
+        >Invalid email format.</span
+      >
+    </div>
+
     <input
       type="password"
       name="password"
       placeholder="Password"
       formControlName="password"
     />
+    <div
+      *ngIf="
+        signupForm.controls['password'].invalid &&
+        signupForm.controls['password'].touched
+      "
+      class="error-message"
+    >
+      <span *ngIf="signupForm.controls['password'].errors?.['required']"
+        >Password is required.</span
+      >
+    </div>
+
+    <div class="card-terms">
+      <input type="checkbox" formControlName="terms" />
+      <span>I have read and agree to the <a href="">Terms of Service</a></span>
+    </div>
+    <div
+      *ngIf="
+        signupForm.controls['terms'].invalid &&
+        signupForm.controls['terms'].touched
+      "
+      class="error-message"
+    >
+      You must accept the terms and conditions to proceed.
+    </div>
+
     <input type="submit" value="Signup" />
   </form>
-  <div class="card-terms">
-    <input type="checkbox" />
-    <span>I have read and agree to the <a href="">Terms of Service</a></span>
-  </div>
 </div>

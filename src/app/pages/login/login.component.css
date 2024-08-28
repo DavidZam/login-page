@@ -46,3 +46,9 @@
     font-size: 26px;
     font-weight: bold;
 }
+
+.error-message {
+    color: red;
+    font-size: 0.875em;
+    margin-top: 0.5em;
+}

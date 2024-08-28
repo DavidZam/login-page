@@ -3,13 +3,13 @@ import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-admin',
+  selector: 'app-dashboard',
   standalone: true,
   imports: [],
-  templateUrl: './admin.component.html',
-  styleUrl: './admin.component.css'
+  templateUrl: './dashboard.component.html',
+  styleUrl: './dashboard.component.css'
 })
-export class AdminComponent {
+export class DashboardComponent {
   authService = inject(AuthService);
   router = inject(Router);
   public logout(){
