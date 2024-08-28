@@ -14,7 +14,6 @@ import { CommonModule } from '@angular/common'; // Import CommonModule
   standalone: true,
   imports: [ReactiveFormsModule, RouterModule, CommonModule], // Include CommonModule
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
   authService = inject(AuthService);

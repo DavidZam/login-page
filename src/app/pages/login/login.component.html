@@ -1,50 +1,52 @@
-<div class="login-card">
-  <div class="card-title">
-    <h1>Sign In</h1>
-    <span>Don't have an account? <a routerLink="/signup">Sign Up</a></span>
+<div class="card-container">
+  <div class="login-card">
+    <div class="card-title">
+      <h1>Log In</h1>
+      <span>Don't have an account? <a routerLink="/signup">Sign Up</a></span>
+    </div>
+    <form class="form-group" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <input
+        type="email"
+        name="email"
+        placeholder="Email"
+        formControlName="email"
+      />
+      <div
+        *ngIf="
+          loginForm.controls['email'].invalid &&
+          loginForm.controls['email'].touched
+        "
+        class="error-message"
+      >
+        <span *ngIf="loginForm.controls['email'].errors?.['required']"
+          >Email is required.</span
+        >
+        <span *ngIf="loginForm.controls['email'].errors?.['email']"
+          >Invalid email format.</span
+        >
+      </div>
+      <input
+        type="password"
+        name="password"
+        placeholder="Password"
+        formControlName="password"
+      />
+      <div
+        *ngIf="
+          loginForm.controls['password'].invalid &&
+          loginForm.controls['password'].touched
+        "
+        class="error-message"
+      >
+        <span *ngIf="loginForm.controls['password'].errors?.['required']"
+          >Password is required.</span
+        >
+      </div>
+      <!-- Validation message for login errors -->
+      <div *ngIf="loginError" class="error-message">
+        {{ loginError }}
+      </div>
+      <input type="submit" value="Login" />
+    </form>
   </div>
-  <form class="form-group" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <input
-      type="email"
-      name="email"
-      placeholder="Email"
-      formControlName="email"
-    />
-    <div
-      *ngIf="
-        loginForm.controls['email'].invalid &&
-        loginForm.controls['email'].touched
-      "
-      class="error-message"
-    >
-      <span *ngIf="loginForm.controls['email'].errors?.['required']"
-        >Email is required.</span
-      >
-      <span *ngIf="loginForm.controls['email'].errors?.['email']"
-        >Invalid email format.</span
-      >
-    </div>
-    <input
-      type="password"
-      name="password"
-      placeholder="Password"
-      formControlName="password"
-    />
-    <div
-      *ngIf="
-        loginForm.controls['password'].invalid &&
-        loginForm.controls['password'].touched
-      "
-      class="error-message"
-    >
-      <span *ngIf="loginForm.controls['password'].errors?.['required']"
-        >Password is required.</span
-      >
-    </div>
-    <!-- Validation message for login errors -->
-    <div *ngIf="loginError" class="error-message">
-      {{ loginError }}
-    </div>
-    <input type="submit" value="Login" />
-  </form>
 </div>
